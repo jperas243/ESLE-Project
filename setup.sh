@@ -16,3 +16,4 @@ kubectl get deployment -n boutique
 #https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#scaling-a-deployment
 
 kubectl scale deployment/shippingservice -n boutique --replicas=2
+minikube stop
