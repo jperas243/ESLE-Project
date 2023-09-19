@@ -1,0 +1,12 @@
+#nginx controller
+controller:
+  watchIngressWithoutClass: true
+  metrics:
+    enabled: true
+    service:
+      annotations:
+        prometheus.io/port: "10254"
+        prometheus.io/scrape: "true"
+    serviceMonitor:
+      enabled: "true"
+      additionalLabels.release: "prometheus"

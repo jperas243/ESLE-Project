@@ -1,0 +1,3 @@
+host: grafana-int.cloud.ist.com
+service_name: prometheus-grafana
+service_port: 80
