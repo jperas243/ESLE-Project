@@ -22,7 +22,7 @@ helm install cockroachdb-release --values my-values.yaml cockroachdb/cockroachdb
 helm upgrade \
 cockroachdb-release \
 cockroachdb/cockroachdb \
---set statefulset.replicas=4 \
+--set statefulset.replicas=1 \
 --reuse-values -n cockroachdb
 
 #Access CockroachDB Console
@@ -38,12 +38,14 @@ cockroach sql --insecure --host=cockroachdb-release-public
 kubectl get svc -n cockroachdb #get cockroachdb-release-public cluster IP
 #ex:10.111.68.1
 kubectl attach cockroachdb -c cockroachdb -i -t -n cockroachdb
-cockroach workload init tpcc --warehouses=10 --survival-goal zone 'postgresql://root@10.111.68.1:26257/tpcc?sslmode=disable'
-cockroach workload run tpcc --warehouses=10 --duration=1m --wait=true --tolerate-errors --survival-goal zone 'postgresql://root@10.111.68.1:26257/tpcc?sslmode=disable'
+cockroach workload init tpcc --warehouses=10 --survival-goal zone 'postgresql://root@10.107.77.43:26257/tpcc?sslmode=disable'
+cockroach workload run tpcc --warehouses=10 --duration=1m --wait=true --tolerate-errors --survival-goal zone 'postgresql://root@10.107.77.43:26257/tpcc?sslmode=disable'
 cockroach sql --insecure --host=cockroachdb-release-public
 SHOW TABLES FROM tpcc;
 DROP DATABASE tpcc CASCADE;
 
+
+kubectl run -n cockroachdb cockroachdb --image=cockroachdb/cockroach:v23.1.10 -it -- bash -c "cockroach workload run tpcc --warehouses=10 --duration=1m --wait=true --tolerate-errors --survival-goal zone 'postgresql://root@10.107.77.43:26257/tpcc?sslmode=disable'"
 
 
 minikube stop
