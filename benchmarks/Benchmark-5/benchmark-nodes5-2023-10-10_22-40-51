@@ -1,0 +1,15 @@
+I231010 21:40:52.256960 1 workload/cli/run.go:624  [-] 1  random seed: -7963501748912182738
+I231010 21:40:52.257249 1 workload/cli/run.go:431  [-] 2  creating load generator...
+I231010 21:40:52.260524 1 workload/cli/run.go:462  [-] 3  creating load generator... done (took 3.274246ms)
+_elapsed___errors__ops/sec(inst)___ops/sec(cum)__p50(ms)__p95(ms)__p99(ms)_pMax(ms)
+   30.0s        0         2317.9         2318.2      7.3     14.7     17.8     83.9 write
+   60.0s        0         1579.3         1948.7     13.1     15.7     22.0     37.7 write
+Highest sequence written: 116943. Can be passed as --write-seq=R116943 to the next run.
+
+_elapsed___errors_____ops(total)___ops/sec(cum)__avg(ms)__p50(ms)__p95(ms)__p99(ms)_pMax(ms)__total
+   60.0s        0         116923         1948.7     10.3     11.0     15.2     19.9     83.9  write
+
+_elapsed___errors_____ops(total)___ops/sec(cum)__avg(ms)__p50(ms)__p95(ms)__p99(ms)_pMax(ms)__result
+   60.0s        0         116923         1948.7     10.3     11.0     15.2     19.9     83.9  
+Session ended, resume using 'kubectl attach cockroachdb -c cockroachdb -i -t' command when the pod is running
+pod "cockroachdb" deleted

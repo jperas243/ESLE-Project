@@ -1,0 +1,12 @@
+_elapsed___errors__ops/sec(inst)___ops/sec(cum)__p50(ms)__p95(ms)__p99(ms)_pMax(ms)
+   30.0s        0         1377.5         1377.6     11.0     14.7     19.9     71.3 write
+   60.0s        0         1349.7         1363.6     11.0     14.7     19.9     41.9 write
+Highest sequence written: 81836. Can be passed as --write-seq=R81836 to the next run.
+
+_elapsed___errors_____ops(total)___ops/sec(cum)__avg(ms)__p50(ms)__p95(ms)__p99(ms)_pMax(ms)__total
+   60.0s        0          81820         1363.6     11.7     11.0     14.7     19.9     71.3  write
+
+_elapsed___errors_____ops(total)___ops/sec(cum)__avg(ms)__p50(ms)__p95(ms)__p99(ms)_pMax(ms)__result
+   60.0s        0          81820         1363.6     11.7     11.0     14.7     19.9     71.3  
+Session ended, resume using 'kubectl attach cockroachdb -c cockroachdb -i -t' command when the pod is running
+pod "cockroachdb" deleted
