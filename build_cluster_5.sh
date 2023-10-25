@@ -4,6 +4,8 @@ export CACHE=$2 #128MiB
 export MAX_SQL_MEMORY=$3 #25%
 export NUM_REPLICAS=$4 #5
 export RANGE_MAX_BYTES=$5 #256
+export EXPERIMENT_NUMBER=$6 #256
+
 
 sh init_server_google.sh esle-server1 $RAM
 sh init_server_google.sh esle-server2 $RAM
@@ -53,7 +55,14 @@ ssh -o StrictHostKeyChecking=accept-new $SERVER_IP_4 "sudo docker exec roach1 co
 ssh -o StrictHostKeyChecking=accept-new $SERVER_IP_5 "sudo docker exec roach1 cockroach sql --database=kv --insecure --execute='ALTER TABLE kv CONFIGURE ZONE USING range_min_bytes = 0, range_max_bytes = $RANGE_MAX_BYTES, gc.ttlseconds = 89999, num_replicas = $NUM_REPLICAS;'"
 
 #BENCHMARKS
-ssh -o StrictHostKeyChecking=accept-new $SERVER_IP_BENCHMARK sudo docker run --rm --name=roach1 --hostname=roach1 -p 26257:26257 -p 26357:26357 -p 8080:8080 cockroachdb/cockroach:v23.1.11 workload run kv --concurrency=1024 --duration=1m --display-every=30s --tolerate-errors "postgresql://root@$SERVER_IP_1:26257?sslmode=disable" > ./benchmarks/Benchmark-1/benchmark-nodes1-test-$(date +%F_%H-%M-%S)""
+sh run_benchmark.sh $SERVER_IP_BENCHMARK $SERVER_IP_1 $EXPERIMENT_NUMBER
+sh run_benchmark.sh $SERVER_IP_BENCHMARK $SERVER_IP_1 $EXPERIMENT_NUMBER
+sh run_benchmark.sh $SERVER_IP_BENCHMARK $SERVER_IP_1 $EXPERIMENT_NUMBER
+sh run_benchmark.sh $SERVER_IP_BENCHMARK $SERVER_IP_1 $EXPERIMENT_NUMBER
+sh run_benchmark.sh $SERVER_IP_BENCHMARK $SERVER_IP_1 $EXPERIMENT_NUMBER
+
+
+
 
 
 
