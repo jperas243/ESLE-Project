@@ -1,0 +1,10 @@
+_elapsed___errors__ops/sec(inst)___ops/sec(cum)__p50(ms)__p95(ms)__p99(ms)_pMax(ms)
+   30.0s        0        21777.1        21886.9     15.7     71.3    117.4    234.9 write
+   60.0s        0        20972.9        21430.1     16.3     75.5    117.4    226.5 write
+Highest sequence written: 1286383. Can be passed as --write-seq=R1286383 to the next run.
+
+_elapsed___errors_____ops(total)___ops/sec(cum)__avg(ms)__p50(ms)__p95(ms)__p99(ms)_pMax(ms)__total
+   60.0s        0        1285895        21429.8     23.9     15.7     75.5    117.4    234.9  write
+
+_elapsed___errors_____ops(total)___ops/sec(cum)__avg(ms)__p50(ms)__p95(ms)__p99(ms)_pMax(ms)__result
+   60.0s        0        1285895        21429.8     23.9     15.7     75.5    117.4    234.9  
